@@ -11,6 +11,29 @@ DISTRIBUTIONS
       Test::More 0
       parent 0
       perl 5.008001
+  CPAN-Meta-2.143240
+    pathname: D/DA/DAGOLDEN/CPAN-Meta-2.143240.tar.gz
+    provides:
+      CPAN::Meta 2.143240
+      CPAN::Meta::Converter 2.143240
+      CPAN::Meta::Feature 2.143240
+      CPAN::Meta::History 2.143240
+      CPAN::Meta::Merge 2.143240
+      CPAN::Meta::Prereqs 2.143240
+      CPAN::Meta::Spec 2.143240
+      CPAN::Meta::Validator 2.143240
+    requirements:
+      CPAN::Meta::Requirements 2.121
+      CPAN::Meta::YAML 0.008
+      Carp 0
+      ExtUtils::MakeMaker 6.17
+      JSON::PP 2.27200
+      Parse::CPAN::Meta 1.4414
+      Scalar::Util 0
+      perl 5.008
+      strict 0
+      version 0.88
+      warnings 0
   Class-Method-Modifiers-2.09
     pathname: E/ET/ETHER/Class-Method-Modifiers-2.09.tar.gz
     provides:
@@ -125,6 +148,58 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 6.52
       Test::More 0.82
       perl 5.00503
+  Module-Build-0.4210
+    pathname: L/LE/LEONT/Module-Build-0.4210.tar.gz
+    provides:
+      Module::Build 0.4210
+      Module::Build::Base 0.4210
+      Module::Build::Compat 0.4210
+      Module::Build::Config 0.4210
+      Module::Build::Cookbook 0.4210
+      Module::Build::Dumper 0.4210
+      Module::Build::Notes 0.4210
+      Module::Build::PPMMaker 0.4210
+      Module::Build::Platform::Default 0.4210
+      Module::Build::Platform::MacOS 0.4210
+      Module::Build::Platform::Unix 0.4210
+      Module::Build::Platform::VMS 0.4210
+      Module::Build::Platform::VOS 0.4210
+      Module::Build::Platform::Windows 0.4210
+      Module::Build::Platform::aix 0.4210
+      Module::Build::Platform::cygwin 0.4210
+      Module::Build::Platform::darwin 0.4210
+      Module::Build::Platform::os2 0.4210
+      Module::Build::PodParser 0.4210
+      inc::latest 0.4210
+      inc::latest::private 0.4210
+    requirements:
+      CPAN::Meta 2.142060
+      CPAN::Meta::YAML 0.003
+      Cwd 0
+      Data::Dumper 0
+      ExtUtils::CBuilder 0.27
+      ExtUtils::Install 0
+      ExtUtils::Manifest 0
+      ExtUtils::Mkbootstrap 0
+      ExtUtils::ParseXS 2.21
+      File::Basename 0
+      File::Compare 0
+      File::Copy 0
+      File::Find 0
+      File::Path 0
+      File::Spec 0.82
+      File::Temp 0.15
+      Getopt::Long 0
+      Module::Metadata 1.000002
+      Parse::CPAN::Meta 1.4401
+      Perl::OSType 1
+      Pod::Man 2.17
+      Test::Harness 3.16
+      Test::More 0.49
+      Text::Abbrev 0
+      Text::ParseWords 0
+      perl 5.008000
+      version 0.87
   Module-Build-Tiny-0.034
     pathname: L/LE/LEONT/Module-Build-Tiny-0.034.tar.gz
     provides:
@@ -198,6 +273,7 @@ DISTRIBUTIONS
       Role::Tiny::With undef
     requirements:
       Exporter 5.57
+      ExtUtils::MakeMaker 0
       Test::Fatal 0.003
       Test::More 0.96
   Sub-Exporter-Progressive-0.001011
@@ -219,59 +295,16 @@ DISTRIBUTIONS
       Try::Tiny 0.07
       strict 0
       warnings 0
-  Test-Harness-3.30
-    pathname: L/LE/LEONT/Test-Harness-3.30.tar.gz
+  Text-CSV_XS-1.12
+    pathname: H/HM/HMBRAND/Text-CSV_XS-1.12.tgz
     provides:
-      App::Prove 3.30
-      App::Prove::State 3.30
-      App::Prove::State::Result 3.30
-      App::Prove::State::Result::Test 3.30
-      TAP::Base 3.30
-      TAP::Formatter::Base 3.30
-      TAP::Formatter::Color 3.30
-      TAP::Formatter::Console 3.30
-      TAP::Formatter::Console::ParallelSession 3.30
-      TAP::Formatter::Console::Session 3.30
-      TAP::Formatter::File 3.30
-      TAP::Formatter::File::Session 3.30
-      TAP::Formatter::Session 3.30
-      TAP::Harness 3.30
-      TAP::Harness::Env 3.30
-      TAP::Object 3.30
-      TAP::Parser 3.30
-      TAP::Parser::Aggregator 3.30
-      TAP::Parser::Grammar 3.30
-      TAP::Parser::Iterator 3.30
-      TAP::Parser::Iterator::Array 3.30
-      TAP::Parser::Iterator::Process 3.30
-      TAP::Parser::Iterator::Stream 3.30
-      TAP::Parser::IteratorFactory 3.30
-      TAP::Parser::Multiplexer 3.30
-      TAP::Parser::Result 3.30
-      TAP::Parser::Result::Bailout 3.30
-      TAP::Parser::Result::Comment 3.30
-      TAP::Parser::Result::Plan 3.30
-      TAP::Parser::Result::Pragma 3.30
-      TAP::Parser::Result::Test 3.30
-      TAP::Parser::Result::Unknown 3.30
-      TAP::Parser::Result::Version 3.30
-      TAP::Parser::Result::YAML 3.30
-      TAP::Parser::ResultFactory 3.30
-      TAP::Parser::Scheduler 3.30
-      TAP::Parser::Scheduler::Job 3.30
-      TAP::Parser::Scheduler::Spinner 3.30
-      TAP::Parser::Source 3.30
-      TAP::Parser::SourceHandler 3.30
-      TAP::Parser::SourceHandler::Executable 3.30
-      TAP::Parser::SourceHandler::File 3.30
-      TAP::Parser::SourceHandler::Handle 3.30
-      TAP::Parser::SourceHandler::Perl 3.30
-      TAP::Parser::SourceHandler::RawTAP 3.30
-      TAP::Parser::YAMLish::Reader 3.30
-      TAP::Parser::YAMLish::Writer 3.30
-      Test::Harness 3.30
+      Text::CSV_XS 1.12
     requirements:
+      Config 0
+      DynaLoader 0
       ExtUtils::MakeMaker 0
+      IO::Handle 0
+      Test::More 0
   Try-Tiny-0.19
     pathname: D/DO/DOY/Try-Tiny-0.19.tar.gz
     provides:
@@ -287,7 +320,6 @@ DISTRIBUTIONS
     pathname: I/IL/ILMARI/bareword-filehandles-0.003.tar.gz
     provides:
       bareword::filehandles 0.003
-      inc::BarewordFilehandlesMakeMaker undef
     requirements:
       B::Hooks::OP::Check 0
       ExtUtils::Depends 0
@@ -315,8 +347,6 @@ DISTRIBUTIONS
   multidimensional-0.011
     pathname: I/IL/ILMARI/multidimensional-0.011.tar.gz
     provides:
-      MyTest undef
-      inc::MultidimensionalMakeMaker undef
       multidimensional 0.011
     requirements:
       B::Hooks::OP::Check 0.19
@@ -333,7 +363,6 @@ DISTRIBUTIONS
     provides:
       strictures 1.005002
     requirements:
-      ExtUtils::CBuilder 0
       ExtUtils::MakeMaker 0
       bareword::filehandles 0
       indirect 0
