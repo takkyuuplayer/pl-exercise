@@ -2,7 +2,6 @@ use common::sense;
 
 use Time::Piece                      ();
 use Text::MicroTemplate::DataSection ();
-use Test::Mock::Guard;
 use Test::More;
 use Test::Pretty;
 use YAML ();
