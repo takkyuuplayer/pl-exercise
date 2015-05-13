@@ -1,5 +1,6 @@
 requires 'common::sense';
 requires 'Moo';
+requires 'Net::FTPSSL';
 requires 'Text::CSV_XS';
 requires 'Test::Simple';
 requires 'Test::Pretty';
