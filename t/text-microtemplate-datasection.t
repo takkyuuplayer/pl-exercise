@@ -7,14 +7,15 @@ use Test::Pretty;
 use YAML ();
 
 subtest 'pass' => sub {
+    my $yyyymm = Time::Piece->localtime->strftime('%Y%m');
     is_deeply YAML::Load(
         Text::MicroTemplate::DataSection::render_mt('fixtures')),
         {
         table_name =>
             [ { id => 1, comment => 'foo' }, { id => 2, comment => 'bar' }, ],
-        table_name_201502 => [
-            { id => 1, comment => 'foo', yyyymm => 201502 },
-            { id => 2, comment => 'bar', yyyymm => 201502 },
+        "table_name_$yyyymm" => [
+            { id => 1, comment => 'foo', yyyymm => $yyyymm},
+            { id => 2, comment => 'bar', yyyymm => $yyyymm},
         ]
         };
 };
