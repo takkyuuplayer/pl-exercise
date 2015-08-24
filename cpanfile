@@ -1,5 +1,6 @@
 requires 'common::sense';
 requires 'List::MoreUtils';
+requires 'Mojolicious';
 requires 'Moo';
 requires 'Moo::Role';
 requires 'namespace::clean';
