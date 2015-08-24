@@ -1,5 +1,5 @@
 package PerlDoc::Moo;
 
-use :erlDoc::Moo::Cat::Food;
+use PerlDoc::Moo::Cat::Food;
 
 1;

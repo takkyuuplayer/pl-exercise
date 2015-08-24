@@ -12,6 +12,7 @@ sub feed_lion {
 
 has taste => (
     is => 'ro',
+    default => sub { 'strawberry' },
 );
 
 has brand =>(
