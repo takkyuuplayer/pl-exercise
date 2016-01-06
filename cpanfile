@@ -5,6 +5,7 @@ requires 'Moo';
 requires 'Moo::Role';
 requires 'namespace::clean';
 requires 'Net::FTPSSL';
+requires 'Parallel::ForkManager';
 requires 'Text::CSV_XS';
 requires 'Test::Simple';
 requires 'Test::Pretty';
