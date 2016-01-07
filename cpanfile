@@ -1,12 +1,16 @@
 requires 'common::sense';
 requires 'List::MoreUtils';
 requires 'Mojolicious';
+requires 'MongoDB';
 requires 'Moo';
 requires 'Moo::Role';
 requires 'namespace::clean';
 requires 'Net::FTPSSL';
 requires 'Parallel::ForkManager';
 requires 'Text::CSV_XS';
+requires 'Test::Deep';
+requires 'Test::Exception';
+requires 'Test::SharedFork';
 requires 'Test::Simple';
 requires 'Test::Pretty';
 requires 'Text::MicroTemplate::DataSection';
