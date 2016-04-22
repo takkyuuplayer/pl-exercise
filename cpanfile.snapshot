@@ -61,6 +61,12 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  Class-Accessor-Lite-0.08
+    pathname: K/KA/KAZUHO/Class-Accessor-Lite-0.08.tar.gz
+    provides:
+      Class::Accessor::Lite 0.08
+    requirements:
+      ExtUtils::MakeMaker 6.36
   Class-Method-Modifiers-2.09
     pathname: E/ET/ETHER/Class-Method-Modifiers-2.09.tar.gz
     provides:
@@ -92,6 +98,13 @@ DISTRIBUTIONS
       Time::HiRes 0
       XSLoader 0
       perl 5.008
+  Clone-0.38
+    pathname: G/GA/GARU/Clone-0.38.tar.gz
+    provides:
+      Clone 0.38
+    requirements:
+      ExtUtils::MakeMaker 0
+      Test::More 0
   Config-AutoConf-0.311
     pathname: R/RE/REHSACK/Config-AutoConf-0.311.tar.gz
     provides:
@@ -134,6 +147,43 @@ DISTRIBUTIONS
       Data::Section::Simple 0.07
     requirements:
       ExtUtils::MakeMaker 6.30
+  Data-Validate-Domain-0.11
+    pathname: D/DR/DROLSKY/Data-Validate-Domain-0.11.tar.gz
+    provides:
+      Data::Validate::Domain 0.11
+    requirements:
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      Net::Domain::TLD 0
+      perl 5.006
+      strict 0
+      warnings 0
+  Data-Validate-IP-0.25
+    pathname: D/DR/DROLSKY/Data-Validate-IP-0.25.tar.gz
+    provides:
+      Data::Validate::IP 0.25
+    requirements:
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      NetAddr::IP 4
+      Scalar::Util 0
+      base 0
+      perl 5.008
+      strict 0
+      warnings 0
+  Data-Validate-URI-0.07
+    pathname: S/SO/SONNEN/Data-Validate-URI-0.07.tar.gz
+    provides:
+      Data::Validate::URI 0.07
+    requirements:
+      Data::Validate::Domain 0
+      Data::Validate::IP 0
+      ExtUtils::MakeMaker 0
+  Data-Walk-2.00
+    pathname: G/GU/GUIDO/Data-Walk-2.00.tar.gz
+    provides:
+      Data::Walk 2.00
+    requirements:
   DateTime-1.21
     pathname: D/DR/DROLSKY/DateTime-1.21.tar.gz
     provides:
@@ -590,6 +640,24 @@ DISTRIBUTIONS
       base 0
       strict 0
       warnings 0
+  Email-Valid-1.200
+    pathname: R/RJ/RJBS/Email-Valid-1.200.tar.gz
+    provides:
+      Email::Valid 1.200
+    requirements:
+      ExtUtils::MakeMaker 0
+      Mail::Address 0
+      Scalar::Util 0
+      Test::More 0
+      perl 5.006
+  Email-Valid-Loose-0.05
+    pathname: M/MI/MIYAGAWA/Email-Valid-Loose-0.05.tar.gz
+    provides:
+      Email::Valid::Loose 0.05
+    requirements:
+      Email::Valid 0.17
+      ExtUtils::MakeMaker 0
+      Test::More 0.32
   Exporter-Tiny-0.042
     pathname: T/TO/TOBYINK/Exporter-Tiny-0.042.tar.gz
     provides:
@@ -641,6 +709,13 @@ DISTRIBUTIONS
       File::Spec 0
       strict 0
       warnings 0
+  Hash-MultiValue-0.16
+    pathname: A/AR/ARISTOTLE/Hash-MultiValue-0.16.tar.gz
+    provides:
+      Hash::MultiValue 0.16
+    requirements:
+      ExtUtils::MakeMaker 0
+      perl 5.008001
   IO-Socket-SSL-2.014
     pathname: S/SU/SULLR/IO-Socket-SSL-2.014.tar.gz
     provides:
@@ -658,6 +733,15 @@ DISTRIBUTIONS
       Mozilla::CA 0
       Net::SSLeay 1.46
       Scalar::Util 0
+  JSON-2.90
+    pathname: M/MA/MAKAMAKA/JSON-2.90.tar.gz
+    provides:
+      JSON 2.90
+      JSON::Backend::PP 2.90
+      JSON::Boolean 2.90
+    requirements:
+      ExtUtils::MakeMaker 0
+      Test::More 0
   JSON-MaybeXS-1.003005
     pathname: E/ET/ETHER/JSON-MaybeXS-1.003005.tar.gz
     provides:
@@ -672,6 +756,89 @@ DISTRIBUTIONS
       JSON::PP 2.27202
       Scalar::Util 0
       perl 5.006
+  JSON-Pointer-0.07
+    pathname: Z/ZI/ZIGOROU/JSON-Pointer-0.07.tar.gz
+    provides:
+      JSON::Pointer 0.07
+      JSON::Pointer::Context 0.07
+      JSON::Pointer::Exception 0.07
+      JSON::Pointer::Syntax 0.07
+    requirements:
+      B 0
+      CPAN::Meta 0
+      CPAN::Meta::Prereqs 0
+      Carp 1.20
+      Class::Accessor::Lite 0.05
+      Clone 0.36
+      Exporter 0
+      ExtUtils::CBuilder 0
+      JSON 2.53
+      Module::Build 0.38
+      URI::Escape 3.31
+      perl 5.008001
+  JSV-0.07
+    pathname: Z/ZI/ZIGOROU/JSV-0.07.tar.gz
+    provides:
+      JSV 0.07
+      JSV::Context undef
+      JSV::Keyword undef
+      JSV::Keyword::Draft4::AllOf undef
+      JSV::Keyword::Draft4::AnyOf undef
+      JSV::Keyword::Draft4::Dependencies undef
+      JSV::Keyword::Draft4::Enum undef
+      JSV::Keyword::Draft4::Format undef
+      JSV::Keyword::Draft4::Id undef
+      JSV::Keyword::Draft4::Items undef
+      JSV::Keyword::Draft4::MaxItems undef
+      JSV::Keyword::Draft4::MaxLength undef
+      JSV::Keyword::Draft4::MaxProperties undef
+      JSV::Keyword::Draft4::Maximum undef
+      JSV::Keyword::Draft4::MinItems undef
+      JSV::Keyword::Draft4::MinLength undef
+      JSV::Keyword::Draft4::MinProperties undef
+      JSV::Keyword::Draft4::Minimum undef
+      JSV::Keyword::Draft4::MultipleOf undef
+      JSV::Keyword::Draft4::Not undef
+      JSV::Keyword::Draft4::OneOf undef
+      JSV::Keyword::Draft4::Pattern undef
+      JSV::Keyword::Draft4::Properties undef
+      JSV::Keyword::Draft4::Ref undef
+      JSV::Keyword::Draft4::Required undef
+      JSV::Keyword::Draft4::Type undef
+      JSV::Keyword::Draft4::UniqueItems undef
+      JSV::Reference undef
+      JSV::Result undef
+      JSV::Util::Type undef
+      JSV::Validator 0.07
+      Test::JSV::Suite undef
+    requirements:
+      B 0
+      CPAN::Meta 0
+      CPAN::Meta::Prereqs 0
+      Carp 0
+      Class::Accessor::Lite 0
+      Clone 0
+      Data::Validate::Domain 0
+      Data::Validate::IP 0
+      Data::Validate::URI 0
+      Data::Walk 0
+      Email::Valid::Loose 0
+      Exporter 0
+      ExtUtils::CBuilder 0
+      File::Basename 0
+      File::Spec 0
+      FindBin 0
+      Hash::MultiValue 0
+      JSON 0
+      JSON::Pointer 0
+      List::MoreUtils 0
+      List::Util 0
+      Module::Build 0.38
+      Module::Pluggable::Object 0
+      Scalar::Util 0
+      URI 0
+      URI::Split 0
+      perl 5.008005
   List-MoreUtils-0.412
     pathname: R/RE/REHSACK/List-MoreUtils-0.412.tar.gz
     provides:
@@ -689,6 +856,39 @@ DISTRIBUTIONS
       IPC::Cmd 0
       XSLoader 0
       base 0
+  MailTools-2.16
+    pathname: M/MA/MARKOV/MailTools-2.16.tar.gz
+    provides:
+      Mail undef
+      Mail::Address 2.16
+      Mail::Cap 2.16
+      Mail::Field 2.16
+      Mail::Field::AddrList 2.16
+      Mail::Field::Date 2.16
+      Mail::Field::Generic 2.16
+      Mail::Filter 2.16
+      Mail::Header 2.16
+      Mail::Internet 2.16
+      Mail::Mailer 2.16
+      Mail::Mailer::qmail 2.16
+      Mail::Mailer::rfc822 2.16
+      Mail::Mailer::sendmail 2.16
+      Mail::Mailer::smtp 2.16
+      Mail::Mailer::smtp::pipe 2.16
+      Mail::Mailer::smtps 2.16
+      Mail::Mailer::smtps::pipe 2.16
+      Mail::Mailer::testfile 2.16
+      Mail::Mailer::testfile::pipe 2.16
+      Mail::Send 2.16
+      Mail::Util 2.16
+    requirements:
+      Date::Format 0
+      Date::Parse 0
+      ExtUtils::MakeMaker 0
+      IO::Handle 0
+      Net::Domain 1.05
+      Net::SMTP 1.03
+      Test::More 0
   Module-Build-0.4214
     pathname: L/LE/LEONT/Module-Build-0.4214.tar.gz
     provides:
@@ -775,6 +975,22 @@ DISTRIBUTIONS
       Try::Tiny 0
       strict 0
       warnings 0
+  Module-Pluggable-5.2
+    pathname: S/SI/SIMONW/Module-Pluggable-5.2.tar.gz
+    provides:
+      Devel::InnerPackage 0.4
+      Module::Pluggable 5.2
+      Module::Pluggable::Object 5.2
+    requirements:
+      Exporter 5.57
+      ExtUtils::MakeMaker 0
+      File::Basename 0
+      File::Find 0
+      File::Spec 3.00
+      File::Spec::Functions 0
+      if 0
+      perl 5.00503
+      strict 0
   Module-Runtime-0.014
     pathname: Z/ZE/ZEFRAM/Module-Runtime-0.014.tar.gz
     provides:
@@ -1045,6 +1261,14 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       Test 0
       perl 5.006
+  Net-Domain-TLD-1.74
+    pathname: A/AL/ALEXP/Net-Domain-TLD-1.74.tar.gz
+    provides:
+      Net::Domain::TLD 1.74
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 0
+      Storable 0
   Net-FTPSSL-0.27
     pathname: C/CL/CLEACH/Net-FTPSSL-0.27.tar.gz
     provides:
@@ -1068,6 +1292,19 @@ DISTRIBUTIONS
       MIME::Base64 0
       Test::More 0.60_01
       perl 5.005
+  NetAddr-IP-4.079
+    pathname: M/MI/MIKER/NetAddr-IP-4.079.tar.gz
+    provides:
+      NetAddr::IP 4.079
+      NetAddr::IP::InetBase 0.08
+      NetAddr::IP::Lite 1.57
+      NetAddr::IP::Util 1.53
+      NetAddr::IP::UtilPP 1.09
+      NetAddr::IP::UtilPolluted 1.53
+      NetAddr::IP::Util_IS 1
+    requirements:
+      ExtUtils::MakeMaker 0
+      Test::More 0
   PBKDF2-Tiny-0.005
     pathname: D/DA/DAGOLDEN/PBKDF2-Tiny-0.005.tar.gz
     provides:
@@ -1396,6 +1633,49 @@ DISTRIBUTIONS
     requirements:
       Test::More 0
       perl 5.005
+  TimeDate-2.30
+    pathname: G/GB/GBARR/TimeDate-2.30.tar.gz
+    provides:
+      Date::Format 2.24
+      Date::Format::Generic 2.24
+      Date::Language 1.10
+      Date::Language::Afar 0.99
+      Date::Language::Amharic 1.00
+      Date::Language::Austrian 1.01
+      Date::Language::Brazilian 1.01
+      Date::Language::Bulgarian 1.01
+      Date::Language::Chinese 1.00
+      Date::Language::Chinese_GB 1.01
+      Date::Language::Czech 1.01
+      Date::Language::Danish 1.01
+      Date::Language::Dutch 1.02
+      Date::Language::English 1.01
+      Date::Language::Finnish 1.01
+      Date::Language::French 1.04
+      Date::Language::Gedeo 0.99
+      Date::Language::German 1.02
+      Date::Language::Greek 1.00
+      Date::Language::Hungarian 1.01
+      Date::Language::Icelandic 1.01
+      Date::Language::Italian 1.01
+      Date::Language::Norwegian 1.01
+      Date::Language::Oromo 0.99
+      Date::Language::Romanian 1.01
+      Date::Language::Russian 1.01
+      Date::Language::Russian_cp1251 1.01
+      Date::Language::Russian_koi8r 1.01
+      Date::Language::Sidama 0.99
+      Date::Language::Somali 0.99
+      Date::Language::Spanish 1.00
+      Date::Language::Swedish 1.01
+      Date::Language::Tigrinya 1.00
+      Date::Language::TigrinyaEritrean 1.00
+      Date::Language::TigrinyaEthiopian 1.00
+      Date::Language::Turkish 1.0
+      Date::Parse 2.30
+      Time::Zone 2.24
+    requirements:
+      ExtUtils::MakeMaker 0
   Try-Tiny-0.22
     pathname: D/DO/DOY/Try-Tiny-0.22.tar.gz
     provides:
@@ -1456,6 +1736,70 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 6.17
       perl 5.010001
+  URI-1.71
+    pathname: E/ET/ETHER/URI-1.71.tar.gz
+    provides:
+      URI 1.71
+      URI::Escape 3.31
+      URI::Heuristic 4.20
+      URI::IRI 1.71
+      URI::QueryParam 1.71
+      URI::Split 1.71
+      URI::URL 5.04
+      URI::WithBase 2.20
+      URI::_foreign 1.71
+      URI::_generic 1.71
+      URI::_idna 1.71
+      URI::_ldap 1.71
+      URI::_login 1.71
+      URI::_punycode 1.71
+      URI::_query 1.71
+      URI::_segment 1.71
+      URI::_server 1.71
+      URI::_userpass 1.71
+      URI::data 1.71
+      URI::file 4.21
+      URI::file::Base 1.71
+      URI::file::FAT 1.71
+      URI::file::Mac 1.71
+      URI::file::OS2 1.71
+      URI::file::QNX 1.71
+      URI::file::Unix 1.71
+      URI::file::Win32 1.71
+      URI::ftp 1.71
+      URI::gopher 1.71
+      URI::http 1.71
+      URI::https 1.71
+      URI::ldap 1.71
+      URI::ldapi 1.71
+      URI::ldaps 1.71
+      URI::mailto 1.71
+      URI::mms 1.71
+      URI::news 1.71
+      URI::nntp 1.71
+      URI::pop 1.71
+      URI::rlogin 1.71
+      URI::rsync 1.71
+      URI::rtsp 1.71
+      URI::rtspu 1.71
+      URI::sftp 1.71
+      URI::sip 1.71
+      URI::sips 1.71
+      URI::snews 1.71
+      URI::ssh 1.71
+      URI::telnet 1.71
+      URI::tn3270 1.71
+      URI::urn 1.71
+      URI::urn::isbn undef
+      URI::urn::oid 1.71
+    requirements:
+      Exporter 5.57
+      ExtUtils::MakeMaker 0
+      MIME::Base64 2
+      Scalar::Util 0
+      parent 0
+      perl 5.008001
+      utf8 0
   Unicode-Stringprep-1.105
     pathname: C/CF/CFAERBER/Unicode-Stringprep-1.105.tar.gz
     provides:
