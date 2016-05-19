@@ -187,7 +187,14 @@ subtest 'type' => sub {
                         "credit_card" => 5555555555555555,
                     }
                 );
+                my $res = $v->validate(
+                    $schema,
+                    {   "name"        => "John Doe",
+                        "credit_card" => 5555555555555555,
+                    }
+                );
             };
+
         };
         subtest pattern => sub {
             my $schema = {
@@ -198,11 +205,26 @@ subtest 'type' => sub {
                 },
                 "additionalProperties" => 0,
             };
-            ok $v->validate($schema, { "S_25"=> "This is a string" });
-            ok $v->validate($schema, { "I_0"=> 42 });
-            ok ! $v->validate($schema, { "I_0"=> 'This is a string'});
+            ok $v->validate($schema, { "S_25" => "This is a string" });
+            ok $v->validate($schema, { "I_0"  => 42 });
+            ok !$v->validate($schema, { "I_0" => 'This is a string' });
         };
     };
+};
+
+subtest 'get_error_map' => sub {
+    my $schema = {
+        "type"       => "object",
+        "properties" => {
+            "name"  => { "type" => "string" },
+            "email" => { "type" => "string", format => 'email', maxLength => 50, },
+        },
+
+        "required" => ["name", "email"],
+    };
+    my $res = $v->validate($schema, {});
+    use Data::Dumper;
+    warn Dumper $res->get_error_map;
 };
 
 subtest 'error messages' => sub {

@@ -16,4 +16,5 @@ requires 'Test::Simple';
 requires 'Text::CSV_XS';
 requires 'Text::MicroTemplate::DataSection';
 requires 'Time::Piece';
+requires 'URI';
 requires 'YAML';
