@@ -15,13 +15,12 @@ subtest apns => sub {
 
     # send notification to APNs
     $apns->send(
-        'f83e6b78 32806865 c5ea91b7 3bf7af63 090bd9cf 97e315e3 f0c0b4d6 eef96ba6',
+        '1d74882997491c40cbf1972886f1a0acd72e77b548aec1f58e21d4a3ba2c7aaa',
         {   aps => {
                 alert => "Hello, APNs!",
                 badge => 1,
                 sound => "default",
             },
-            foo => [qw/bar baz/],
         }
     );
 
