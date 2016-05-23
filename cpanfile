@@ -1,11 +1,14 @@
 requires 'common::sense';
 requires 'JSV';
 requires 'List::MoreUtils';
+requires 'Mojo::APNS';
 requires 'Mojolicious';
 requires 'MongoDB';
 requires 'Moo';
 requires 'Moo::Role';
 requires 'namespace::clean';
+requires 'Net::APNS';
+requires 'Net::APNs::Extended';
 requires 'Net::FTPSSL';
 requires 'Parallel::ForkManager';
 requires 'Test::Deep';

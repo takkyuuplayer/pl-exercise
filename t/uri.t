@@ -12,6 +12,8 @@ subtest 'uri w/o domain' => sub {
     $uri->query_form({ param => 'hige'});
 
     is $uri->as_string, 'tp-test://hoge/fuga?param=hige';
+
+    is $$uri, $uri->as_string;
 };
 
 done_testing;
