@@ -1,6 +1,6 @@
 use common::sense;
 
-use List::MoreUtils qw(mesh);
+use List::MoreUtils qw(mesh firstidx);
 use Test::More;
 use Test::Pretty;
 
@@ -36,6 +36,17 @@ subtest 'Test mesh' => sub {
             col2 => undef,
             col3 => undef,
             };
+    };
+};
+
+subtest firstidx => sub {
+    subtest 'by integer' => sub {
+        my $res = firstidx { $_ == 3 } (0, 1, 2, 3);
+        is $res, 3;
+    };
+    subtest 'by string' => sub {
+        my $res = firstidx { $_ == 3 } ("0", "1", "2", "3");
+        is $res, 3;
     };
 };
 
