@@ -220,11 +220,10 @@ subtest 'get_error_map' => sub {
             "email" => { "type" => "string", format => 'email', maxLength => 50, },
         },
 
-        "required" => ["name", "email"],
+        "required" => [ "name", "email" ],
     };
     my $res = $v->validate($schema, {});
-    use Data::Dumper;
-    warn Dumper $res->get_error_map;
+    ok $res->get_error_map;
 };
 
 subtest 'error messages' => sub {
@@ -241,6 +240,28 @@ subtest 'error messages' => sub {
     is $v->validate($schema, { foo => 1 }), 1;
     is $v->validate($schema, { foo => 10,  bar => "xyz" }), 1;
     is $v->validate($schema, { foo => 1.2, bar => "xyz" }), 0;
+};
+
+subtest 'loose_type' => sub {
+    subtest 'with enum' => sub {
+        my $schema = {
+            type => "integer",
+            enum => [ 0, 1 ],
+        };
+        is $v->validate($schema, 0),   1;
+        is $v->validate($schema, "0"), 0;
+        is $v->validate($schema, "0", { loose_type => 1 }), 0;
+    };
+    subtest 'with maximum' => sub {
+        my $schema = {
+            type => "integer",
+            minimum => 0,
+            maximum => 1,
+        };
+        is $v->validate($schema, 0),   1;
+        is $v->validate($schema, "0"), 0;
+        is $v->validate($schema, "0", { loose_type => 1 }), 1;
+    };
 };
 
 done_testing;
