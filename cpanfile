@@ -1,4 +1,5 @@
 requires 'common::sense';
+requires 'FormValidator::Lite';
 requires 'JSV';
 requires 'List::MoreUtils';
 requires 'Mojo::APNS';
