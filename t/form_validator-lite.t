@@ -14,12 +14,18 @@ subtest NUMBER => sub {
 
         ok $validator->is_valid;
     };
-    subtest 'NG' => sub {
+    subtest 'NG: out of range' => sub {
         my $validator = $class->new({ month => 13 });
         $validator->check(month => [ [ BETWEEN => qw(1 12) ] ],);
 
         ok !$validator->is_valid;
         is_deeply $validator->errors, { month => { BETWEEN => 1, }, };
+    };
+    subtest 'OK: missing but it does not care.' => sub {
+        my $validator = $class->new({ month => ''});
+        $validator->check(month => [ [ BETWEEN => qw(1 12) ] ],);
+
+        ok $validator->is_valid;
     };
 
     subtest 'OK: with 0 prefix' => sub {
