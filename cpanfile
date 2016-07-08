@@ -1,3 +1,4 @@
+requires 'Hash::MultiValue';
 requires 'common::sense';
 requires 'FormValidator::Lite';
 requires 'JSV';
