@@ -1,5 +1,7 @@
 sub {
     my $env = shift;
 
-    return [ 200, [ 'Content-Type' => 'text/plain' ], ["Hello World\n"] ];
+use Data::Dumper;
+
+    return [ 200, [ 'Content-Type' => 'text/plain' ], [Dumper $env] ];
 };
