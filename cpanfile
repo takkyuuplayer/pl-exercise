@@ -1,6 +1,6 @@
-requires 'Hash::MultiValue';
 requires 'common::sense';
 requires 'FormValidator::Lite';
+requires 'Hash::MultiValue';
 requires 'JSV';
 requires 'List::MoreUtils';
 requires 'Mojo::APNS';
@@ -15,6 +15,7 @@ requires 'Net::APNS::Persistent';
 requires 'Net::FTPSSL';
 requires 'Parallel::ForkManager';
 requires 'Params::Validate';
+requires 'Starman';
 requires 'Test::Base::Less';
 requires 'Test::Deep';
 requires 'Test::Exception';
