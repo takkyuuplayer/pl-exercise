@@ -1,7 +1,6 @@
 use common::sense;
 
-use Test::More;
-use Test::Pretty;
+use Test::More skip_all => '';
 
 use Net::APNS;
 

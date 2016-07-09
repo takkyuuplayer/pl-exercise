@@ -2,8 +2,7 @@ use common::sense;
 
 use Test::Deep;
 use Test::Exception;
-use Test::More;
-use Test::Pretty;
+use Test::More skip_all => '';
 use Test::SharedFork;
 
 use Parallel::ForkManager;

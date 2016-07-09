@@ -21,7 +21,7 @@ subtest 'variable in string' => sub {
             s => 't',
         );
         is "This is %variable", 'This is %variable';
-        is "This is $variable->{t}", 'This is e';
+        is "This is $variable{t}", 'This is e';
     };
 
 

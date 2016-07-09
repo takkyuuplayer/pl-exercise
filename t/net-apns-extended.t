@@ -1,6 +1,6 @@
 use common::sense;
 
-use Test::More;
+use Test::More skip_all => '';
 use Test::Pretty;
 use Data::Dumper;
 

@@ -1,33 +1,41 @@
+package Example::Data::Section::Simple;
+use common::sense;
+use Data::Section::Simple ();
+
+sub get_data_section {
+    my $section_name = shift;
+
+    Data::Section::Simple->new(caller)->get_data_section($section_name);
+}
+
+package main;
 use common::sense;
 
 use Data::Section::Simple qw(get_data_section);
 use Test::More;
 use Test::Pretty;
-use Perldoc::DataSectionSimple;
 
 subtest get_data_section => sub {
 
-    my $all = get_data_section;               # All data in hash reference
-    my $foo = get_data_section('foo.html');
+    subtest 'test.yml will not be parsed.' => sub {
+        is get_data_section('test.yml'), '- hoge:
+    fuga: 1
+    hige: 2
 
-    use Data::Dumper;
-    warn Dumper $foo;
-
-    warn 1 x 100;
-    my $test = get_data_section('test.yml');
-    warn Dumper $test;
-
-    warn 1 x 100;
-    my $all = get_data_section();
-    warn Dumper $all;
-
-
+';
+    };
+    subtest all => sub {
+        is_deeply get_data_section,
+            {
+            'foo.html' => get_data_section('foo.html'),
+            'test.yml' => get_data_section('test.yml'),
+            'bar.tt'   => get_data_section('bar.tt'),
+            };
+    };
 };
 
-subtest 'after_new' => sub {
-    my $text = Perldoc::DataSectionSimple::get_data_section('foo.html');
-    warn 1 x 100;
-    warn Dumper $text;
+subtest 'from an another package' => sub {
+    is get_data_section('foo.html'), Example::Data::Section::Simple::get_data_section('foo.html');
 };
 done_testing;
 

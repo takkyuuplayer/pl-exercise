@@ -2,7 +2,7 @@ use common::sense;
 
 use File::Basename;
 use Net::FTPSSL;
-use Test::More;
+use Test::More skip_all => '';
 use Test::Pretty;
 
 my $ftps = Net::FTPSSL->new(
