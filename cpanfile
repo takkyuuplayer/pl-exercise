@@ -1,3 +1,4 @@
+requires 'AnyEvent';
 requires 'common::sense';
 requires 'FormValidator::Lite';
 requires 'Hash::MultiValue';
@@ -15,6 +16,7 @@ requires 'Net::APNS::Persistent';
 requires 'Net::FTPSSL';
 requires 'Parallel::ForkManager';
 requires 'Params::Validate';
+requires 'Protocol::HTTP2';
 requires 'Starman';
 requires 'Test::Base::Less';
 requires 'Test::Deep';
