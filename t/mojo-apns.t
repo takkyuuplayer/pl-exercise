@@ -18,64 +18,63 @@ subtest 'notification' => sub {
     isa_ok $apns, 'Mojo::APNS';
     isa_ok $apns->ioloop, 'Mojo::IOLoop';
 
+    my $gateway_stream_id;
     subtest 'enqueue message' => sub {
+        ok !$apns->{gateway_stream_id};
         isa_ok $apns->send($device_id, "Hey there!"), 'Mojo::APNS';
+
+        ok $gateway_stream_id = $apns->{gateway_stream_id};
+
         $apns->send($device_id, "counter: $_") for 1 .. 2;
+
+        is $apns->{gateway_stream_id}, $gateway_stream_id, 'connection resused';
     };
 
-    subtest 'error callback' => sub {
-        $apns->send(
-            $device_id,
-            1 x 256,
-            sub {
-                isa_ok shift, 'Mojo::APNS';
-                like shift,   qr|^Too long message \(\d+\)$|;
-            }
-        );
-    };
-
-    subtest 'on drain as global' => sub {
-        my $i = 0;
+    my $drain_called_count = 0;
+    subtest 'on drain called after sending messages' => sub {
         $apns->on(
             drain => sub {
-                $i++;
+                $drain_called_count++;
                 &_stop_ioloop;
             }
         );
         $apns->ioloop->start;
-        is $i, 1;
+        is $drain_called_count, 1;
+
+        is $apns->{gateway_stream_id}, $gateway_stream_id, 'connection resused';
     };
 
-    subtest 'on drain as call back' => sub {
-        my $i = 0;
-        $apns->send(
-            $device_id,
-            "counter: $_",
-            sub {
-                my ($apns, $msg) = @_;
-                isa_ok $apns, 'Mojo::APNS';
-                is $msg,      '';
-                $i++;
-                &_stop_ioloop;
-            }
-        ) for 3 .. 4;
+    subtest 'callback' => sub {
+        subtest 'called on error' => sub {
+            $apns->send(
+                $device_id,
+                1 x 256,
+                sub {
+                    isa_ok shift, 'Mojo::APNS';
+                    like shift,   qr|^Too long message \(\d+\)$|;
+                }
+            );
+            is $drain_called_count, 1;
+        };
+        subtest 'called on drain' => sub {
+            my $i = 0;
+            $apns->send(
+                $device_id,
+                "counter: $_",
+                sub {
+                    my ($apns, $msg) = @_;
+                    isa_ok $apns, 'Mojo::APNS';
+                    is $msg,      '';
+                    $i++;
+                    &_stop_ioloop;
+                }
+            ) for 3 .. 4;
 
-        $apns->ioloop->start;
-        is $i, 2, 'ioloop start2';
-    };
-
-    subtest 'on feedback' => sub {
-        $apns->on(
-            feedback => sub {
-                my ($apns, $feedback) = @_;
-                ok $feedback;
-                use Data::Dumper;
-                warn Dumper $feedback;
-            },
-        );
-        $apns->send('12345678 23456789 34567890 4567890a 567890ab 67890abc 7890abcd', "feed back",);
-
-        $apns->ioloop->start;
+            $apns->ioloop->start;
+            is $apns->{gateway_stream_id}, $gateway_stream_id, 'connection resused';
+            is $i, 2, 'ioloop start2';
+            is $drain_called_count, 2;
+        };
     };
 };
 
