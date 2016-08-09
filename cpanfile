@@ -1,3 +1,4 @@
+requires 'AnyEvent';
 requires 'common::sense';
 requires 'FormValidator::Lite';
 requires 'Hash::MultiValue';
