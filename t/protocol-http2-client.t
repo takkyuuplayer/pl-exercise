@@ -60,7 +60,67 @@ subtest 'curl --http2 https://http2bin.org/get' => sub {
             $h2_client->feed($data);
         }
     }
-    ok 1;
+};
+
+subtest 'APNS notification' => sub {
+    SKIP: {
+        skip 'Skip actual request', 2;
+
+        my $h2_client = $class->new;
+
+        my $host      = 'api.development.push.apple.com';
+        my $port      = 443;
+        my $device_id = 'ee9113521b262498fd0443d34cc34eb8f58eb55489640d9189cb81644794cd9c';
+
+        $h2_client->request(
+
+            # HTTP/2 headers
+            ':scheme'    => 'https',
+            ':authority' => $host . ':' . $port,
+            ':path'      => '/3/device/' . $device_id,
+            ':method'    => 'POST',
+
+            # HTTP/1.1 headers
+            headers => [
+                'user-agent' => $class . '-Test',
+                'apns-topic' => 'com.amazonaws.appletest.takkyuuplayer',
+            ],
+
+            data => '{"aps": {"alert":"hogefuga!" , "sound": "default", "badge": 1}}',
+
+            # Callback when receive server's response
+            on_done => sub {
+                my ($headers, $body) = @_;
+
+                isa_ok $headers, 'ARRAY';
+                ok !$body, 'Empty on success';
+            },
+        );
+
+        my $client = IO::Socket::SSL->new(
+            PeerHost          => $host,
+            PeerPort          => $port,
+            SSL_npn_protocols => ['h2'],
+            SSL_cert_file     => "$ENV{'APNS_PRIVATE_KEY_FILE'}",
+        ) or die $!;
+
+        $client->blocking(0);
+
+        my $sel = IO::Select->new($client);
+
+        # send/recv frames until request is done
+        while (!$h2_client->shutdown) {
+            $sel->can_write;
+            while (my $frame = $h2_client->next_frame) {
+                syswrite $client, $frame;
+            }
+
+            $sel->can_read;
+            while (sysread $client, my $data, 4096) {
+                $h2_client->feed($data);
+            }
+        }
+    }
 };
 
 done_testing;
