@@ -64,7 +64,7 @@ subtest 'curl --http2 https://http2bin.org/get' => sub {
 
 subtest 'APNS notification' => sub {
     SKIP: {
-        skip 'Skip actual request', 2;
+        #skip 'Skip actual request', 2;
 
         my $h2_client = $class->new;
 
@@ -93,7 +93,7 @@ subtest 'APNS notification' => sub {
                 my ($headers, $body) = @_;
 
                 isa_ok $headers, 'ARRAY';
-                ok !$body, 'Empty on success';
+                ok !$body, "$body";
             },
         );
 
