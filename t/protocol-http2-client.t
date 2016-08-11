@@ -2,7 +2,9 @@ use common::sense;
 use Data::Dumper;
 use IO::Select;
 use IO::Socket::SSL;
-use Test::More;
+use Test::More skip_all => 'not send request';
+use Test::Exception;
+use Test::Mock::Guard;
 use Test::Pretty;
 
 my $class = 'Protocol::HTTP2::Client';
@@ -63,64 +65,100 @@ subtest 'curl --http2 https://http2bin.org/get' => sub {
 };
 
 subtest 'APNS notification' => sub {
-    SKIP: {
-        #skip 'Skip actual request', 2;
+    my $host      = 'api.development.push.apple.com';
+    my $port      = 443;
+    my $device_id = 'ee9113521b262498fd0443d34cc34eb8f58eb55489640d9189cb81644794cd9c';
+    my %request   = (
+        ':scheme'    => 'https',
+        ':authority' => $host . ':' . $port,
+        ':path'      => '/3/device/' . $device_id,
+        ':method'    => 'POST',
+        headers      => [
+            'user-agent' => $class . '-Test',
+            'apns-topic' => 'com.amazonaws.appletest.takkyuuplayer',
+        ],
+        data    => '{"aps": {"alert":"hogefuga!" , "sound": "default", "badge": 1}}',
+        on_done => sub {
+            my ($headers, $body) = @_;
 
+            isa_ok $headers, 'ARRAY';
+            ok !$body, "$body";
+        },
+    );
+
+    subtest 'w/o keepalive' => sub {
         my $h2_client = $class->new;
+        $h2_client->request(%request);
 
-        my $host      = 'api.development.push.apple.com';
-        my $port      = 443;
-        my $device_id = 'ee9113521b262498fd0443d34cc34eb8f58eb55489640d9189cb81644794cd9c';
+        my $ssl_client = IO::Socket::SSL->new(
+            PeerHost          => $host,
+            PeerPort          => $port,
+            SSL_npn_protocols => ['h2'],
+            SSL_cert_file     => "$ENV{'APNS_PRIVATE_KEY_FILE'}",
+        ) or die $!;
+        $ssl_client->blocking(0);
 
-        $h2_client->request(
+        my $sel = IO::Select->new($ssl_client);
 
-            # HTTP/2 headers
-            ':scheme'    => 'https',
-            ':authority' => $host . ':' . $port,
-            ':path'      => '/3/device/' . $device_id,
-            ':method'    => 'POST',
+        while (!$h2_client->shutdown) {
+            $sel->can_write;
+            while (my $frame = $h2_client->next_frame) {
+                syswrite $ssl_client, $frame;
+            }
 
-            # HTTP/1.1 headers
-            headers => [
-                'user-agent' => $class . '-Test',
-                'apns-topic' => 'com.amazonaws.appletest.takkyuuplayer',
-            ],
+            $sel->can_read;
+            while (sysread $ssl_client, my $data, 4096) {
+                $h2_client->feed($data);
+            }
+        }
+    };
 
-            data => '{"aps": {"alert":"hogefuga!" , "sound": "default", "badge": 1}}',
+    subtest 'w/ keepalive' => sub {
+        my $h2_client = $class->new;
+        $h2_client->request(%request);
 
-            # Callback when receive server's response
-            on_done => sub {
-                my ($headers, $body) = @_;
-
-                isa_ok $headers, 'ARRAY';
-                ok !$body, "$body";
-            },
-        );
-
-        my $client = IO::Socket::SSL->new(
+        my $ssl_client = IO::Socket::SSL->new(
             PeerHost          => $host,
             PeerPort          => $port,
             SSL_npn_protocols => ['h2'],
             SSL_cert_file     => "$ENV{'APNS_PRIVATE_KEY_FILE'}",
         ) or die $!;
 
-        $client->blocking(0);
+        $ssl_client->blocking(0);
 
-        my $sel = IO::Select->new($client);
+        my $sel = IO::Select->new($ssl_client);
 
-        # send/recv frames until request is done
         while (!$h2_client->shutdown) {
             $sel->can_write;
             while (my $frame = $h2_client->next_frame) {
-                syswrite $client, $frame;
+                syswrite $ssl_client, $frame;
             }
 
             $sel->can_read;
-            while (sysread $client, my $data, 4096) {
+            while (sysread $ssl_client, my $data, 4096) {
                 $h2_client->feed($data);
             }
+            last;
         }
-    }
+
+        sleep 5;
+
+        $h2_client->request(%request);
+        $h2_client->request(%request);
+
+        while (!$h2_client->shutdown) {
+            $sel->can_write;
+            while (my $frame = $h2_client->next_frame) {
+                syswrite $ssl_client, $frame;
+            }
+
+            $sel->can_read;
+            while (sysread $ssl_client, my $data, 4096) {
+                $h2_client->feed($data);
+            }
+            last;
+        }
+    };
 };
 
 done_testing;
