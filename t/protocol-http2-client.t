@@ -1,10 +1,12 @@
 use common::sense;
+
 use Data::Dumper;
 use IO::Select;
 use IO::Socket::SSL;
-use Test::More skip_all => 'not send request';
+use Test::Deep;
 use Test::Exception;
 use Test::Mock::Guard;
+use Test::More skip_all => 'not send request';
 use Test::Pretty;
 
 my $class = 'Protocol::HTTP2::Client';
@@ -32,6 +34,19 @@ subtest 'curl --http2 https://http2bin.org/get' => sub {
 
             isa_ok $headers, 'ARRAY';
             ok $data;
+
+            my %headers = @$headers;
+            cmp_deeply \%headers,
+                {
+                'x-clacks-overhead'                => 'GNU Terry Pratchett',
+                'access-control-allow-origin'      => '*',
+                'server'                           => re('h2o'),
+                'content-type'                     => 'application/json',
+                'access-control-allow-credentials' => 'true',
+                'content-length'                   => ignore,
+                'date'                             => ignore,
+                ':status'                          => '200'
+                };
         },
     );
 
