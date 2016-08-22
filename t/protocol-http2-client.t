@@ -6,7 +6,7 @@ use IO::Socket::SSL;
 use Test::Deep;
 use Test::Exception;
 use Test::Mock::Guard;
-use Test::More skip_all => 'not send request';
+use Test::More ; #skip_all => 'not send request';
 use Test::Pretty;
 
 my $class = 'Protocol::HTTP2::Client';
@@ -103,7 +103,7 @@ subtest 'APNS notification' => sub {
 
     subtest 'w/o keepalive' => sub {
         my $h2_client = $class->new;
-        $h2_client->request(%request);
+        $h2_client->request(%request) for 1 .. 10;
 
         my $ssl_client = IO::Socket::SSL->new(
             PeerHost          => $host,
