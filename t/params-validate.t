@@ -39,13 +39,13 @@ subtest hash => sub {
 
 subtest 'SCALAR' => sub {
     subtest SCALAR => sub {
-        my $validator = { foo => SCALAR };
+        my $validator = { foo => { type => SCALAR}  };
 
         my @valid = (foo => 1);
-        my @valid2 = ( foo => { hoge => 1 } );
+        my @valid2 = ( foo => undef);
 
         lives_ok { validate(@valid, $validator) };
-        lives_ok { validate(@valid2, $validator) };
+        dies_ok { validate(@valid2, $validator) };
     };
     subtest SCALARREF => sub {
         my $validator = { foo => SCALARREF };
