@@ -6,7 +6,7 @@ use IO::Socket::SSL;
 use Test::Deep;
 use Test::Exception;
 use Test::Mock::Guard;
-use Test::More ; #skip_all => 'not send request';
+use Test::More ; skip_all => 'not send request';
 use Test::Pretty;
 
 my $class = 'Protocol::HTTP2::Client';
