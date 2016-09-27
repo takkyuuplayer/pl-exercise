@@ -1,7 +1,7 @@
 use common::sense;
 use Data::Dumper;
 use Test::Deep;
-use Test::More;
+use Test::More skip_all => 'not send request';
 use Test::Pretty;
 
 my $class = 'Amazon::S3';
