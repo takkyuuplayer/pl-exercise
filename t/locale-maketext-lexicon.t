@@ -7,7 +7,7 @@ use Locale::Maketext::Lexicon ();
 sub import {
     my $class = shift;
 
-    my %locales = map { $_ => [ Gettext => "t/data/locale/$_.po", ], } qw( en_US ja_JP);
+    my %locales = map { $_ => [ JSON => "t/data/locale/$_.json", ], } qw( en_US ja_JP);
     Locale::Maketext::Lexicon->import(
         {   %locales,
             _decode  => 1,
