@@ -6,6 +6,7 @@ requires 'Hash::MultiValue';
 requires 'IO::Socket::SSL';
 requires 'JSV';
 requires 'List::MoreUtils';
+requires 'Locale::Maketext::Lexicon';
 requires 'Mojo::APNS';
 requires 'Mojolicious';
 requires 'MongoDB';
