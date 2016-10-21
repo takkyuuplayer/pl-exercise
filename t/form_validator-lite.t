@@ -5,7 +5,7 @@ use Test::More;
 my $class = 'FormValidator::Lite';
 use_ok $class;
 
-$class->load_constraints(qw(Number));
+$class->load_constraints(qw(Number Email ));
 
 subtest NUMBER => sub {
     subtest 'OK' => sub {
@@ -33,6 +33,27 @@ subtest NUMBER => sub {
         $validator->check(month => [ [ BETWEEN => qw(1 12) ] ],);
 
         ok $validator->is_valid;
+    };
+};
+
+subtest EMAIL => sub {
+    subtest 'OK' => sub {
+        my $validator = $class->new({ email => 'test.@gmail.com' });
+        $validator->check(email => [ [ qw(EMAIL_LOOSE) ]],);
+
+        ok $validator->is_valid;
+    };
+    subtest 'NG: loose email' => sub {
+        my $validator = $class->new({ email => 'test.@gmail.com' });
+        $validator->check(email => [ [ qw(EMAIL ) ]],);
+
+        ok !$validator->is_valid;
+    };
+    subtest 'NG: invalid email' => sub {
+        my $validator = $class->new({ email => 'test@com' });
+        $validator->check(email => [ [ qw(EMAIL_LOOSE) ]],);
+
+        ok !$validator->is_valid;
     };
 };
 

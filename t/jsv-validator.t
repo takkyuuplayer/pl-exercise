@@ -222,8 +222,36 @@ subtest 'get_error_map' => sub {
 
         "required" => [ "name", "email" ],
     };
-    my $res = $v->validate($schema, {});
-    ok $res->get_error_map;
+    my $res = $v->validate($schema, {
+        name => 1,
+        email => 'hoge',
+    });
+    isa_ok $res->get_error_map, 'Hash::MultiValue';
+    is_deeply \%{ $res->get_error_map },
+        {
+        '/name' => {
+            'schema'                 => { 'type' => 'string' },
+            'keyword'                => 'type',
+            'schema_pointer'         => '/properties/name',
+            'message'                => 'instance type doesn\'t match schema type',
+            'schema_pointer_history' => [],
+            'instance'               => 1,
+            'pointer'                => '/name'
+        },
+        '/email' => {
+            'schema_pointer_history' => [],
+            'message'                => 'The instance does not pass \'email\' format check',
+            'instance'               => 'hoge',
+            'pointer'                => '/email',
+            'schema'                 => {
+                'format'    => 'email',
+                'maxLength' => 50,
+                'type'      => 'string'
+            },
+            'schema_pointer' => '/properties/email',
+            'keyword'        => 'format'
+        }
+        };
 };
 
 subtest 'error messages' => sub {
