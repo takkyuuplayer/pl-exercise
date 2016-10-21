@@ -222,10 +222,12 @@ subtest 'get_error_map' => sub {
 
         "required" => [ "name", "email" ],
     };
-    my $res = $v->validate($schema, {
-        name => 1,
-        email => 'hoge',
-    });
+    my $res = $v->validate(
+        $schema,
+        {   name  => 1,
+            email => 'hoge',
+        }
+    );
     isa_ok $res->get_error_map, 'Hash::MultiValue';
     is_deeply \%{ $res->get_error_map },
         {
@@ -282,7 +284,7 @@ subtest 'loose_type' => sub {
     };
     subtest 'with maximum' => sub {
         my $schema = {
-            type => "integer",
+            type    => "integer",
             minimum => 0,
             maximum => 1,
         };

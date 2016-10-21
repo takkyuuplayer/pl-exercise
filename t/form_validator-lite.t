@@ -22,7 +22,7 @@ subtest NUMBER => sub {
         is_deeply $validator->errors, { month => { BETWEEN => 1, }, };
     };
     subtest 'OK: missing but it does not care.' => sub {
-        my $validator = $class->new({ month => ''});
+        my $validator = $class->new({ month => '' });
         $validator->check(month => [ [ BETWEEN => qw(1 12) ] ],);
 
         ok $validator->is_valid;
@@ -39,19 +39,19 @@ subtest NUMBER => sub {
 subtest EMAIL => sub {
     subtest 'OK' => sub {
         my $validator = $class->new({ email => 'test.@gmail.com' });
-        $validator->check(email => [ [ qw(EMAIL_LOOSE) ]],);
+        $validator->check(email => [ [qw(EMAIL_LOOSE)] ],);
 
         ok $validator->is_valid;
     };
     subtest 'NG: loose email' => sub {
         my $validator = $class->new({ email => 'test.@gmail.com' });
-        $validator->check(email => [ [ qw(EMAIL ) ]],);
+        $validator->check(email => [ [qw(EMAIL )] ],);
 
         ok !$validator->is_valid;
     };
     subtest 'NG: invalid email' => sub {
         my $validator = $class->new({ email => 'test@com' });
-        $validator->check(email => [ [ qw(EMAIL_LOOSE) ]],);
+        $validator->check(email => [ [qw(EMAIL_LOOSE)] ],);
 
         ok !$validator->is_valid;
     };
