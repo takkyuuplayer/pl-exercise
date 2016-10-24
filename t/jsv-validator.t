@@ -254,6 +254,9 @@ subtest 'get_error_map' => sub {
             'keyword'        => 'format'
         }
         };
+
+    is $v->validate($schema, { name => 'name', email => 'test@example.com' }),  1;
+    is $v->validate($schema, { name => 'name', email => 'test.@example.com' }), 1;
 };
 
 subtest 'error messages' => sub {
