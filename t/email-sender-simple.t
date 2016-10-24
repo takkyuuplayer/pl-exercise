@@ -53,7 +53,10 @@ subtest 'send' => sub {
 
         subtest 'w/ overwrite' => sub {
             Email::Address::Loose->globally_override;
-            lives_ok { $class->send($mine); };
+            SKIP: {
+                skip 'actual sending', 1;
+                lives_ok { $class->send($mine); };
+            }
         };
     };
 };

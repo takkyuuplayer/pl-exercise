@@ -27,17 +27,24 @@ my $handle = Test::Model->new;
 isa_ok $handle, 'Test::Model';
 
 subtest insert => sub {
+    $handle->dbh->do('DROP TABLE IF EXISTS `user`');
     $handle->dbh->do(
         qq|
-        CREATE TABLE IF NOT EXISTS `user` (
+        CREATE TABLE `user` (
           `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
           `name` VARCHAR(255) NOT NULL,
           PRIMARY KEY (`id`))
         ENGINE = InnoDB;
         |
     );
-    my $res = $handle->insert(user => { name => 'foobar' });
-    isa_ok $res, 'Test::Model::Row::User';    # fail in MySQL 5.7.15
+
+    subtest 'Succeed w/ id' => sub {
+        ok $handle->insert(user => { id => 1, name => 'foobar' });
+    };
+
+    subtest 'Fails w/o id' => sub {
+        ok $handle->insert(user => { name => 'foobar' });    # fail in MySQL 5.7.15
+    };
 };
 
 done_testing;
