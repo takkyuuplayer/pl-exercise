@@ -1,6 +1,9 @@
 requires 'Amazon::S3';
 requires 'AnyEvent';
 requires 'common::sense';
+requires 'Email::MIME';
+requires 'Email::Send';
+requires 'Email::Sender::Simple';
 requires 'FormValidator::Lite';
 requires 'Hash::MultiValue';
 requires 'IO::Socket::SSL';
