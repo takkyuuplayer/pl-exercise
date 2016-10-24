@@ -1,6 +1,7 @@
 requires 'Amazon::S3';
 requires 'AnyEvent';
 requires 'common::sense';
+requires 'DBD::mysql';
 requires 'Email::Address::Loose';
 requires 'Email::MIME';
 requires 'Email::Send';
@@ -27,6 +28,7 @@ requires 'Parallel::ForkManager';
 requires 'Params::Validate';
 requires 'Protocol::HTTP2';
 requires 'Starman';
+requires 'Teng';
 requires 'Test::Base::Less';
 requires 'Test::Deep';
 requires 'Test::Exception';
