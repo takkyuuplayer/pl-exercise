@@ -1,4 +1,6 @@
 language: perl
+cache:
+  - local
 perl:
   - "5.22"
   - "5.20"
