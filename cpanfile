@@ -39,6 +39,7 @@ requires 'Test::Simple' => '== 1.001014';
 requires 'Test::Stub';
 requires 'Text::CSV_XS';
 requires 'Text::MicroTemplate::DataSection';
+requires 'Text::Xslate';
 requires 'Time::Piece';
 requires 'URI';
 requires 'WWW::Google::Cloud::Messaging';
