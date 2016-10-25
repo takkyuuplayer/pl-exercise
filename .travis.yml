@@ -6,7 +6,7 @@ perl:
   - "5.16"
 env: PERL_CPANM_OPT="--notest --force --skip-satisfied"
 before_install:
-    - "cpanm Carton"
+    - "cpanm Carton ExtUtils::MakeMaker"
 install:
     - "carton install"
 before_script:
