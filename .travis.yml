@@ -1,12 +1,13 @@
 language: perl
 perl:
+  - "5.24"
   - "5.22"
   - "5.20"
   - "5.18"
   - "5.16"
 env: PERL_CPANM_OPT="--notest --force --skip-satisfied"
 before_install:
-    - "cpanm Carton ExtUtils::MakeMaker Test::Simple@1.001014"
+    - "cpanm Carton ExtUtils::MakeMaker"
 install:
     - "carton install"
 before_script:
