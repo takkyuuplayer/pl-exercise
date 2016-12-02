@@ -1,5 +1,3 @@
-requires 'Test::Simple' => '== 1.001014';
-
 requires 'Amazon::S3';
 requires 'AnyEvent';
 requires 'common::sense';
@@ -16,6 +14,7 @@ requires 'List::MoreUtils';
 requires 'Locale::Maketext::Lexicon';
 requires 'Mojo::APNS';
 requires 'Mojolicious';
+requires 'Mojolicious::Plugin::JSON::XS';
 requires 'MongoDB';
 requires 'Moo';
 requires 'Moo::Role';
@@ -37,6 +36,7 @@ requires 'Test::Exception';
 requires 'Test::Mock::Guard';
 requires 'Test::Pretty';
 requires 'Test::SharedFork';
+requires 'Test::Simple' => '== 1.001014';
 requires 'Test::Stub';
 requires 'Text::CSV_XS';
 requires 'Text::MicroTemplate::DataSection';
