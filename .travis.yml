@@ -8,8 +8,10 @@ perl:
 env: PERL_CPANM_OPT="--notest --force --skip-satisfied"
 before_install:
     - "cpanm Carton ExtUtils::MakeMaker"
+    - echo 'requires "Test::Simple" => "== 1.001014";' > ./cpanfile-test
+    - carton install --cpanfile=./cpanfile-test
 install:
-    - "carton install"
+    - make setup
 before_script:
     - mysql -uroot -e "CREATE DATABASE test DEFAULT CHARSET=utf8";
     - mysql -uroot -e "GRANT ALL PRIVILEGES ON test.* TO 'testuser'@'localhost' IDENTIFIED BY 'testpass'"
