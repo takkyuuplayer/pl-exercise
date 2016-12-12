@@ -109,9 +109,9 @@ __DATA__
 
 @@ regex.tx
 
-: if lc($user_agent).match(rx('android')) {
+: if $user_agent.lc().match(rx('android')) {
 Android
-: } else if lc($user_agent).match(rx('(iphone|ipad|ipod)')) {
+: } else if $user_agent.lc().match(rx('(iphone|ipad|ipod)')) {
 iOS
 : } else {
 Others
