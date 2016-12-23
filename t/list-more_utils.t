@@ -2,7 +2,6 @@ use common::sense;
 
 use List::MoreUtils qw(mesh firstidx);
 use Test::More;
-use Test::Pretty;
 
 subtest 'Test mesh' => sub {
     my @columns = qw(col1 col2 col3);

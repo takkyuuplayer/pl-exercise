@@ -1,7 +1,6 @@
 use common::sense;
 
 use Test::More skip_all => '';
-use Test::Pretty;
 
 my $class = 'Mojo::APNS';
 use_ok $class;

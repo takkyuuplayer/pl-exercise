@@ -3,7 +3,6 @@ use common::sense;
 
 use PerlDoc::Exporter;
 use Test::More;
-use Test::Pretty;
 
 my $class = 'PerlDoc::Exporter';
 use_ok $class;

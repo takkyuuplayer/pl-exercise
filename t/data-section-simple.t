@@ -13,7 +13,6 @@ use common::sense;
 
 use Data::Section::Simple qw(get_data_section);
 use Test::More;
-use Test::Pretty;
 
 subtest get_data_section => sub {
 

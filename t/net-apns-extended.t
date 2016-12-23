@@ -1,7 +1,6 @@
 use common::sense;
 
 use Test::More skip_all => '';
-use Test::Pretty;
 use Data::Dumper;
 
 use Net::APNs::Extended;

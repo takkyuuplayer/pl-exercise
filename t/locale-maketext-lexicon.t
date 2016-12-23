@@ -23,7 +23,6 @@ use common::sense;
 use Data::Dumper;
 use Test::Exception;
 use Test::More;
-use Test::Pretty;
 
 Test::Locale::Maketext::Lexicon->import;
 

@@ -1,7 +1,6 @@
 use common::sense;
 
 use Test::More;
-use Test::Pretty;
 
 my $class = 'JSV::Validator';
 use_ok $class;

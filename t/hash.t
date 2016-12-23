@@ -1,7 +1,6 @@
 use common::sense;
 
 use Test::More;
-use Test::Pretty;
 
 subtest 'Operator for hash' => sub {
     my %hash = (

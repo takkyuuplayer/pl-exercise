@@ -1,7 +1,6 @@
 use common::sense;
 use Data::Dumper;
 use Test::More;
-use Test::Pretty;
 
 my $class = 'Mojo::IOLoop';
 use_ok $class;

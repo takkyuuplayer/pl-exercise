@@ -2,11 +2,10 @@ use common::sense;
 
 use Parallel::ForkManager;
 use Test::More;
-use Test::Pretty;
 
 subtest forktest => sub {
     my @array = map { rand } 1 .. 100;
-    my $pm    = new Parallel::ForkManager(30);
+    my $pm = new Parallel::ForkManager(30);
 
     my $counter = 0;
     foreach my $number (@array) {

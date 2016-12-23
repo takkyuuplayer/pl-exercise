@@ -2,7 +2,6 @@ use common::sense;
 use Data::Dumper;
 use Test::Deep;
 use Test::More skip_all => 'not send request';
-use Test::Pretty;
 
 my $class = 'Amazon::S3';
 use_ok $class;
@@ -67,7 +66,6 @@ subtest bucket => sub {
                 $etag =~ s/^"//;
                 $etag =~ s/"$//;
             }
-
 
             my $return = {
                 content_length => $response->content_length    || 0,

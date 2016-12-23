@@ -1,7 +1,6 @@
 use common::sense;
 
 use Test::More;
-use Test::Pretty;
 use Test::Deep qw(eq_deeply);
 
 subtest eq_deeply => sub {

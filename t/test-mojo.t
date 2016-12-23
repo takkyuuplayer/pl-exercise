@@ -31,7 +31,6 @@ package main;
 use common::sense;
 use Data::Dumper;
 use Test::More;
-use Test::Pretty;
 use Test::Deep;
 
 my $class = 'Test::Mojo';

@@ -1,7 +1,6 @@
 use common::sense;
 
 use Test::More;
-use Test::Pretty;
 
 use JSON::XS;
 use Types::Serialiser;
@@ -18,9 +17,10 @@ subtest boolean => sub {
         is_deeply decode_json('["true"]'), ["true"];
         is_deeply decode_json('[true]'),   [Types::Serialiser::true];
 
-        if(decode_json('[true]')->[0]) {
+        if (decode_json('[true]')->[0]) {
             pass 'Types::Serialiser::true is considered as true';
-        } else {
+        }
+        else {
             fail 'Types::Serialiser::true is considered as true';
         }
     };
