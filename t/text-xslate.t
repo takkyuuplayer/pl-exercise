@@ -2,7 +2,6 @@ use common::sense;
 use Data::Dumper;
 use Data::Section::Simple qw(get_data_section);
 use Test::More;
-use Test::Pretty;
 
 my $class = 'Text::Xslate';
 use_ok $class;

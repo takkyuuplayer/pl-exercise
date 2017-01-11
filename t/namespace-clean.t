@@ -5,7 +5,6 @@ use Moo;
 with qw(PerlDoc::Moo::Role);
 
 use Test::More;
-use Test::Pretty;
 
 subtest 'Test::Namespace::clean::None' => sub {
     ok __PACKAGE__->can($_) for qw(name has with);
@@ -19,7 +18,6 @@ use namespace::clean;
 with qw(PerlDoc::Moo::Role);
 
 use Test::More;
-use Test::Pretty;
 
 subtest 'Test::Namespace::clean::Before' => sub {
     ok __PACKAGE__->can($_)  for qw(name);
@@ -34,7 +32,6 @@ with qw(PerlDoc::Moo::Role);
 use namespace::clean;
 
 use Test::More;
-use Test::Pretty;
 
 subtest 'Test::Namespace::clean::After' => sub {
     ok __PACKAGE__->can($_)  for qw(name);

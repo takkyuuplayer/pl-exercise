@@ -23,7 +23,6 @@ use Data::Dumper;
 use Test::Mock::Guard qw(mock_guard);
 use Test::Mojo;
 use Test::More;
-use Test::Pretty;
 
 subtest 'load' => sub {
     my $guard = mock_guard('Mojolicious::Plugin::JSON::XS' => { register => 1, });

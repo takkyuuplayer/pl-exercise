@@ -1,7 +1,6 @@
 use common::sense;
 use Data::Dumper;
 use Test::More;
-use Test::Pretty;
 use Digest::SHA qw(hmac_sha1_hex);
 use Mojo::Util;
 

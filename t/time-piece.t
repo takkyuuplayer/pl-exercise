@@ -1,7 +1,6 @@
 use common::sense;
 use Data::Dumper;
 use Test::More;
-use Test::Pretty;
 
 my $class = 'Time::Piece';
 use_ok $class, ();
