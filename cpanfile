@@ -15,6 +15,7 @@ requires 'Locale::Maketext::Lexicon';
 requires 'Mojo::APNS';
 requires 'Mojolicious';
 requires 'Mojolicious::Plugin::JSON::XS';
+requires 'MojoX::Renderer::Xslate';
 requires 'MongoDB';
 requires 'Moo';
 requires 'Moo::Role';
