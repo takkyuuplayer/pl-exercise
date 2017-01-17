@@ -30,6 +30,12 @@ $routes->get('/api')->to(
     }
 );
 
+$routes->get('/api/redirect')->to(
+    cb => sub {
+        shift->redirect_to('/api');
+    }
+);
+
 $app->start;
 
 __DATA__
@@ -47,12 +53,16 @@ __DATA__
     <title>React App</title>
   </head>
   <body>
-    <button id="api">API</button>
+    <button id="api">/api</button>
+    <button id="api_redirect">/api/redirect</button>
     <pre><: $session :></pre>
     <script type="text/javascript">
 jQuery(function($) {
   $('#api').on('click', function() {
     $.get('/api').then(function(response) { console.log(response); });
+  });
+  $('#api_redirect').on('click', function() {
+    $.get('/api/redirect').then(function(response) { console.log(response); });
   });
 });
     </script>

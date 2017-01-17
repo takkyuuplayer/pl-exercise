@@ -1,6 +1,7 @@
 use common::sense;
 use Mojolicious::Lite;
 use LWP::UserAgent;
+use Mojo::JSON  ();
 
 our $RECAPTCHA_SECRET = $ENV{RECAPTCHA_SECRET};
 
@@ -28,6 +29,7 @@ $routes->post('/')->name('index')->to(
         $c->stash->{response} = {
             code    => $res->code,
             content => $res->content,
+            posted => Mojo::JSON::encode_json($params),
         };
     }
 );
@@ -57,6 +59,7 @@ __DATA__
     <pre>
         code    = <: $response.code :>
         content = <: $response.content :>
+        posted  = <: $response.posted :>
     </pre>
   </body>
 </html>
