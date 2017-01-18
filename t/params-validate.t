@@ -39,10 +39,10 @@ subtest hash => sub {
 
 subtest 'SCALAR' => sub {
     subtest SCALAR => sub {
-        my $validator = { foo => { type => SCALAR}  };
+        my $validator = { foo => { type => SCALAR } };
 
-        my @valid = (foo => 1);
-        my @valid2 = ( foo => undef);
+        my @valid  = (foo => 1);
+        my @valid2 = (foo => undef);
 
         lives_ok { validate(@valid, $validator) };
         dies_ok { validate(@valid2, $validator) };
@@ -51,12 +51,27 @@ subtest 'SCALAR' => sub {
         my $validator = { foo => SCALARREF };
 
         my @invalid = (foo => 1);
-        my @valid = ( foo => { hoge => 1 } );
+        my @valid = (foo => { hoge => 1 });
 
         lives_ok { validate(@invalid, $validator) };
-        lives_ok { validate(@valid, $validator) };
+        lives_ok { validate(@valid,   $validator) };
     };
 };
 
-done_testing;
+subtest 'callbacks' => sub {
+    my $validator = {
+        min => { type => SCALAR },
+        max => {
+            type      => SCALAR,
+            callbacks => { 'max >= min' => sub { $_[0] >= $_[1]->{min} }, }
+        }
+    };
 
+    my @valid   = { min => 1, max => 2 };
+    my @invalid = { min => 2, max => 1 };
+
+    lives_ok { validate(@valid, $validator) };
+    dies_ok { validate(@invalid, $validator) };
+};
+
+done_testing;
