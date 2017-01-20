@@ -5,6 +5,8 @@ use Mojo::Base 'Mojolicious';
 sub startup {
     my $self = shift;
 
+    $self->secrets([qw(X.replace.me)]);
+
     my $routes = $self->routes;
 
     $routes->get('/env')->to(
@@ -23,6 +25,15 @@ sub startup {
                 },
             );
         }
+    );
+    $routes->get('/session')->to(
+        cb => sub {
+            my $c = shift;
+            $c->session({ test => 'value', });
+            $c->render(
+                json => $self->session,
+            );
+        },
     );
 }
 
@@ -54,6 +65,10 @@ subtest 'GET /headers' => sub {
         },
         'res_headers' => { 'Server' => 'Mojolicious (Perl)' }
         };
+};
+subtest 'GET /sessions' => sub {
+    $t->get_ok('/session')->status_is(200);
+    use Data::Dumper; warn Dumper $t->tx->res->headers;
 };
 
 done_testing;

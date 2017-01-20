@@ -209,6 +209,26 @@ subtest 'type' => sub {
             ok !$v->validate($schema, { "I_0" => 'This is a string' });
         };
     };
+    subtest format => sub {
+        my $schema = {
+            "type"       => "object",
+            "properties" => { date => { type => "string", format => 'date', }, },
+            "required"   => ["date"],
+        };
+
+        ok $v->validate($schema, { date => '2017-02-28', });
+        ok !$v->validate($schema, { date => '2017-02-', });
+
+        TODO: {
+            local $TODO = 'Should be invalid';
+            ok !$v->validate($schema, { date => '2017-02-31', });
+        };
+
+        TODO: {
+            local $TODO = 'Should be invalid';
+            ok !$v->validate($schema, { date => '2017-01-99', });
+        };
+    };
 };
 
 subtest 'get_error_map' => sub {
@@ -218,7 +238,6 @@ subtest 'get_error_map' => sub {
             "name"  => { "type" => "string" },
             "email" => { "type" => "string", format => 'email', maxLength => 50, },
         },
-
         "required" => [ "name", "email" ],
     };
     my $res = $v->validate(
