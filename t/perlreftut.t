@@ -86,4 +86,12 @@ subtest 'hashref, arrayref' => sub {
     cmp_bag [ arr => 1, %hash, ], [ arr => 1, key1 => 1, key2 => 2 ];
 };
 
+subtest 'scalar ref' => sub {
+    my $scalar = 'hoge';
+
+    is ref $scalar, '';
+    is ref \$scalar, 'SCALAR';
+};
+
+
 done_testing;
