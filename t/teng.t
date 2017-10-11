@@ -14,7 +14,7 @@ sub new {
     my $class = shift;
 
     $class->SUPER::new(connect_info =>
-            [ 'DBI:mysql:database=test;host=127.0.0.1;port=3306', 'testuser', 'testpass' ]);
+            [ 'DBI:mysql:database=test;host=dbms;port=3306', 'testuser', 'testpass' ]);
 }
 
 package main;

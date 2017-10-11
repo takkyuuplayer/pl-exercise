@@ -12,6 +12,9 @@ before_install:
     - "cpanm Carton ExtUtils::MakeMaker"
 install:
     - make setup
+addons:
+  hosts:
+    - dbms
 before_script:
     - mysql -uroot -e "CREATE DATABASE test DEFAULT CHARSET=utf8";
     - mysql -uroot -e "GRANT ALL PRIVILEGES ON test.* TO 'testuser'@'localhost' IDENTIFIED BY 'testpass'"
