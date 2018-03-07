@@ -1,0 +1,21 @@
+version: '3'
+services:
+  app:
+    container_name: perl-exercise
+    build: .
+    volumes:
+      - ../:/srv/
+    environment:
+      - TZ=Asia/Tokyo
+    tty: true
+    command: bash
+    working_dir: /srv
+    links:
+      - dbms
+  dbms:
+    image: mysql
+    environment:
+      - MYSQL_DATABASE=test
+      - MYSQL_USER=testuser
+      - MYSQL_PASSWORD=testpass
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
